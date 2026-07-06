@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Month To Go</title>
+
+<!-- Google Fonts: Cormorant Garamond (elegant display), Manrope (clean body), Tangerine (romantic script) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@300;400;500;600&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--
+========================================================================
+  CUSTOMIZATION SECTION — edit these values, everything else updates
+  automatically across the whole page.
+========================================================================
+-->
+<script>
+  window.COUNTDOWN_CONFIG = {
+    // His name, shown on the opening screen and the ending screen
+    name: "Pranav",
+
+    // A little rotating list of pet names — shown as a soft, small line
+    // under his name on the opening screen. Add, remove, or reorder freely.
+    nicknames: ["chotu sher", "pineapple", "cupcake"],
+
+    // His birthday — the countdown counts down to this exact moment.
+    // Format: "YYYY-MM-DDTHH:MM:SS" (24-hour time, your local timezone)
+    birthdayDate: "2026-08-06T00:00:00",
+  };
+  // Music note: the background song is embedded further down via Spotify
+  // (see the "FLOATING MUSIC PLAYER" section near the end of this file)
+  // rather than configured here, since it plays through Spotify's own
+  // official embed player.
+</script>
+<!-- ==================== END CUSTOMIZATION SECTION (top) ==================== -->
+
+<!-- Ambient night sky canvas — slow-drifting stars, used behind every section -->
+<canvas id="sky-canvas"></canvas>
+
+<!-- Floating hearts + tiny stars layer (site-wide, sits above the sky) -->
+<div id="floating-layer"></div>
+
+<div id="page">
+
+  <!-- ============ SECTION 1 — OPENING ============ -->
+  <section id="opening-section" class="section">
+    <div class="opening-inner">
+      <p class="opening-line" id="line-hey">Hey, Handsome <span class="heart-flicker">❤️</span></p>
+      <p class="opening-line" id="line-surprise">I have a tiny surprise for you...</p>
+      <p class="nickname-rotator" id="nickname-rotator"></p>
+      <button id="tap-here-btn" class="glow-button">✨ Tap Here</button>
+    </div>
+    <div id="opening-confetti"></div>
+  </section>
+
+  <!-- ============ SECTION 2 — COUNTDOWN ============ -->
+  <section id="countdown-section" class="section">
+    <div class="glass-card" data-reveal>
+      <p class="eyebrow">for <span id="countdown-name">Pranav</span></p>
+      <h2 class="countdown-headline">Only One Month Left <span class="sparkle-emoji">🎉</span></h2>
+      <div class="countdown-grid">
+        <div class="countdown-unit">
+          <span class="countdown-number" id="count-days">00</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="count-hours">00</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="count-minutes">00</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="count-seconds">00</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+      <p class="countdown-caption">Every day brings us one step closer to celebrating you.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3 — A FEW MEMORIES ============ -->
+  <section id="memories-section" class="section">
+    <h2 class="section-title" data-reveal>A Few of My Favorites</h2>
+    <p class="section-subtitle" data-reveal>Just a handful, before the real celebration begins</p>
+
+    <!--
+      ======================================================================
+      CUSTOMIZE MEMORIES: Duplicate a .memory-polaroid block to add more
+      (3-5 is the sweet spot for this teaser). Update the image src and
+      the caption text.
+      Photo paths: assets/images/memory-1.jpg, memory-2.jpg, etc.
+      (placeholder graphics ship here so the page looks complete already)
+      ======================================================================
+    -->
+    <div class="memories-row">
+      <div class="memory-polaroid" data-reveal style="--tilt: -5deg;">
+        <img src="assets/images/memory-1.jpg" alt="A favorite memory"
+             onerror="this.src='https://placehold.co/400x480/1a1430/e9c9d8?text=Memory+1'">
+        <p class="memory-caption">the little one who stole hearts early</p>
+      </div>
+      <div class="memory-polaroid" data-reveal style="--tilt: 4deg;">
+        <img src="assets/images/memory-2.jpg" alt="A favorite memory"
+             onerror="this.src='https://placehold.co/400x480/1a1430/c9b6e4?text=Memory+2'">
+        <p class="memory-caption">this face, even back then</p>
+      </div>
+      <div class="memory-polaroid" data-reveal style="--tilt: -3deg;">
+        <img src="assets/images/memory-3.jpg" alt="A favorite memory"
+             onerror="this.src='https://placehold.co/400x480/1a1430/d4af37?text=Memory+3'">
+        <p class="memory-caption">us, exactly like this</p>
+      </div>
+      <div class="memory-polaroid" data-reveal style="--tilt: 5deg;">
+        <img src="assets/images/memory-4.jpg" alt="A favorite memory"
+             onerror="this.src='https://placehold.co/400x480/1a1430/e9c9d8?text=Memory+4'">
+        <p class="memory-caption">you, being effortlessly you</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4 — A SHORT LETTER ============ -->
+  <section id="letter-section" class="section">
+    <h2 class="section-title" data-reveal>A Short Letter</h2>
+    <p class="section-subtitle" data-reveal>Tap the envelope, love</p>
+
+    <div class="envelope-wrapper" data-reveal>
+      <div class="envelope" id="envelope">
+        <div class="envelope-back"></div>
+        <div class="envelope-letter-peek"></div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-front"></div>
+        <div class="envelope-seal">💌</div>
+      </div>
+    </div>
+
+    <!--
+      ======================================================================
+      CUSTOMIZE LETTER: Edit the data-full-text below with your own words.
+      It types itself out once the envelope opens.
+      ======================================================================
+    -->
+    <div class="letter-paper" id="letter-paper">
+      <button id="letter-close" aria-label="Close letter">&times;</button>
+      <div class="letter-content">
+        <p id="letter-text" data-full-text="This isn't your birthday surprise...
+It's just a little reminder that someone is already counting the days with excitement.
+See you in one month. ❤️"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5 — LOCKED GIFT ============ -->
+  <section id="locked-gift-section" class="section">
+    <h2 class="section-title" data-reveal>Your Real Surprise</h2>
+    <div class="locked-gift-wrapper" data-reveal>
+      <div class="locked-gift">
+        <div class="locked-gift-lid"></div>
+        <div class="locked-gift-body"></div>
+        <div class="locked-gift-ribbon-v"></div>
+        <div class="locked-gift-ribbon-h"></div>
+        <div class="locked-gift-lock">🔒</div>
+      </div>
+    </div>
+    <p class="locked-gift-text" data-reveal>Your real birthday surprise is locked until your special day.</p>
+    <p class="locked-gift-subtext" data-reveal>Come back on your birthday to unlock it.</p>
+  </section>
+
+  <!-- ============ ENDING ============ -->
+  <section id="ending-section" class="section">
+    <div class="ending-content" data-reveal>
+      <h2 class="ending-title" id="ending-days-text">31 Days To Go <span class="heart-flicker">❤️</span></h2>
+      <p class="ending-subtext">The countdown has officially begun.</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- Side navigation dots — desktop only, one per section, click to jump -->
+<nav id="side-nav" aria-label="Section navigation"></nav>
+
+<!-- ============ FLOATING MUSIC PLAYER (Spotify embed) ============ -->
+<div id="music-player">
+  <!--
+    CUSTOMIZE MUSIC: This embeds the official Spotify player for
+    "Love Story (Taylor's Version)" — Taylor Swift. To use a different
+    song, replace the track ID in the iframe src below with another
+    Spotify track's ID (found in its share link, e.g.
+    open.spotify.com/track/THIS_PART_HERE).
+    Note: Spotify's embed needs its own play button tapped once — browser
+    and Spotify security rules don't allow other buttons on the page to
+    start it automatically.
+  -->
+  <p id="song-label" class="song-label">our song 🎵</p>
+  <iframe
+    id="spotify-embed"
+    style="border-radius: 16px"
+    src="https://open.spotify.com/embed/track/3CeCwYWvdfXbZLXFhBrbnf?utm_source=generator&theme=0"
+    width="300"
+    height="80"
+    frameborder="0"
+    allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy">
+  </iframe>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
